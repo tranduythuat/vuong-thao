@@ -1,0 +1,960 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "SVN-GothamBold";
+  src: url("../../assets/fonts/SVN-GothamBold.woff2") format("woff2"), url("../../assets/fonts/SVN-GothamBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SVN-GothamLight";
+  src: url("../../assets/fonts/SVN-Gotham Light.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SVN-Gotham";
+  src: url("../../assets/fonts/SVN-Gotham.woff2") format("woff2"), url("../../assets/fonts/SVN-Gotham.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "SVN-GothamBook";
+  src: url("../../assets/fonts/SVN-GothamBook.woff2") format("woff2"), url("../../assets/fonts/SVN-GothamBook.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Qerginas";
+  src: url("../../assets/fonts/1FTV-VIP-Qerginas-Frenchstyle-Serif.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Lora";
+  src: url("../../assets/fonts/Lora-Regular.woff2") format("woff2"), url("../../assets/fonts/Lora-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "PinyonScript-Regular";
+  src: url("../../assets/fonts/PinyonScript-Regular.woff2") format("woff2"), url("../../assets/fonts/PinyonScript-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "UVNBucThu";
+  src: url("../../assets/fonts/UVN Buc Thu.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MontserratBold";
+  src: url("../../assets/fonts/Montserrat-Bold.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MontserratItalic";
+  src: url("../../assets/fonts/Montserrat-Italic.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "MsClaudy";
+  src: url("../../assets/fonts/MsClaudy-Regular.otf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  font-size: 12px;
+  margin: 0;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+}
+
+body.page-locked {
+  overflow: hidden;
+  touch-action: none;
+}
+
+img {
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+}
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  scroll-margin-top: 100px;
+}
+
+.container {
+  background-color: #fff8ee;
+  max-width: 500px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.281);
+  color: #363823;
+  font-family: "MontserratBold", sans-serif;
+  font-size: 9.11px;
+}
+
+/* music */
+.music-box {
+  display: flex;
+  position: fixed;
+  bottom: 10px;
+  right: 1%;
+  cursor: pointer;
+  z-index: 9999;
+}
+.music-box .label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-origin: right center;
+  position: absolute;
+  right: 39%;
+  max-width: 300px;
+  width: 190%;
+  height: 100%;
+  overflow: hidden;
+}
+.music-box .label .musicLabel {
+  width: 100%;
+  text-align: left;
+  font-size: 12px;
+  background-color: #8db6be;
+  color: #fff;
+  padding: 3% 12%;
+  border-top-left-radius: 25px;
+  border-bottom-left-radius: 25px;
+  border: 1px solid rgba(48, 44, 42, 0.124);
+  opacity: 0.9;
+}
+.music-box .player {
+  max-width: 55px;
+  width: 105%;
+  aspect-ratio: 1;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player #iconSvg {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 500px) {
+  .container {
+    font-size: 1.822vw;
+  }
+  .music-box {
+    bottom: 2vw;
+  }
+  .music-box .label {
+    max-width: 60vw;
+  }
+  .music-box .label .musicLabel {
+    font-size: 2.4vw;
+  }
+  .music-box .player {
+    max-width: 11vw;
+  }
+}
+.spin {
+  animation: spin 4s linear infinite;
+}
+
+/* Định nghĩa hoạt ảnh xoay */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.image-wrapper {
+  perspective: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 0;
+}
+.image-wrapper img {
+  width: 320px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+[data-animate=flip], [data-animate=flip-yoyo] {
+  transform-origin: left center;
+  transform: rotateY(-120deg) scale(0.9);
+  opacity: 0;
+  filter: brightness(0.6);
+  backface-visibility: hidden;
+  transition: none;
+}
+
+[data-animate=flip].active, [data-animate=flip-yoyo].active {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  top: 100px;
+  border-radius: 12px;
+}
+
+.red {
+  background: #e74c3c;
+}
+
+.blue {
+  background: #3498db;
+}
+
+.green {
+  background: #2ecc71;
+}
+
+.shake-text {
+  animation: shakeWithPause 3s ease-in-out infinite;
+}
+
+@keyframes shakeWithPause {
+  /* Rung lắc nhẹ - kéo dài hơn */
+  0%, 100% {
+    transform: translateX(0);
+  }
+  3% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  6% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  9% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  12% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  15% {
+    transform: translateX(-3px) rotate(-1deg);
+  }
+  18% {
+    transform: translateX(3px) rotate(1deg);
+  }
+  21% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  24% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  27% {
+    transform: translateX(-2px) rotate(-0.5deg);
+  }
+  30% {
+    transform: translateX(2px) rotate(0.5deg);
+  }
+  33% {
+    transform: translateX(-1px) rotate(-0.3deg);
+  }
+  36% {
+    transform: translateX(1px) rotate(0.3deg);
+  }
+  39% {
+    transform: translateX(-1px) rotate(-0.3deg);
+  }
+  42% {
+    transform: translateX(0) rotate(0deg);
+  }
+  /* Nghỉ một đoạn */
+  42%, 100% {
+    transform: translateX(0) rotate(0deg);
+  }
+}
+.hero {
+  width: 100%;
+}
+.hero .content {
+  padding: 8% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+}
+.hero .content .logo {
+  margin-bottom: 5%;
+}
+.hero .content .logo img {
+  max-width: 141px;
+}
+.hero .content .invitation-text {
+  font-family: "SVN-Gotham", sans-serif;
+  font-size: 11px;
+  color: #363823;
+  text-transform: uppercase;
+  margin-bottom: 1%;
+}
+.hero .content .invitation-text.sub {
+  font-family: "SVN-GothamLight", sans-serif;
+}
+.hero .content .couple-img {
+  margin: 8% 0 5%;
+}
+.hero .content .couple-img img {
+  max-width: 300px;
+}
+.hero .content .couple-names {
+  font-family: "MsClaudy", sans-serif;
+  font-size: 82px;
+  font-weight: 300;
+  letter-spacing: 5px;
+  word-spacing: 15px;
+}
+.hero .content .illustration img {
+  max-width: 76px;
+}
+@media (max-width: 500px) {
+  .hero .content .logo img {
+    max-width: 28.2vw;
+  }
+  .hero .content .invitation-text {
+    font-size: 2.2vw;
+  }
+  .hero .content .couple-img img {
+    max-width: 60vw;
+  }
+  .hero .content .couple-names {
+    font-size: 16.4vw;
+    letter-spacing: 1vw;
+    word-spacing: 3vw;
+  }
+  .hero .content .illustration img {
+    max-width: 15.2vw;
+  }
+}
+
+.parents {
+  width: 100%;
+}
+.parents .content {
+  width: 100%;
+  background: linear-gradient(rgba(255, 255, 255, 0.175), rgba(255, 255, 255, 0.282)), url("https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/parents_bg.png") no-repeat center/cover;
+  padding: 7%;
+  color: #363823;
+}
+.parents .content .parents-group {
+  width: 100%;
+}
+.parents .content .parents-group .parent-name {
+  font-family: "SVN-Gotham", sans-serif;
+  font-weight: 300;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 1%;
+}
+.parents .content .parents-group address {
+  font-family: "SVN-GothamLight", sans-serif;
+  font-style: italic;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+.parents .content .parents-group.groom-side {
+  text-align: left;
+  margin-bottom: 6%;
+}
+.parents .content .parents-group.bride-side {
+  text-align: right;
+}
+@media (max-width: 500px) {
+  .parents .content .logo img {
+    max-width: 28.2vw;
+  }
+  .parents .content .parents-group .parent-name {
+    font-size: 2.4vw;
+  }
+  .parents .content .parents-group address {
+    font-size: 2vw;
+    letter-spacing: 0.2vw;
+  }
+}
+
+.invite {
+  width: 100%;
+}
+.invite .content {
+  background: url("https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/invite_bg.png") no-repeat bottom/100%;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  padding: 15% 0 26%;
+  color: #363823;
+}
+.invite .content .subtitle {
+  font-family: "SVN-GothamLight", sans-serif;
+  font-size: 10px;
+  margin-bottom: 2%;
+}
+.invite .content .event-date {
+  font-family: "SVN-Gotham", sans-serif;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.invite .content .lunar-date {
+  font-family: "SVN-GothamLight", sans-serif;
+  font-style: italic;
+  font-size: 11px;
+}
+.invite .content .divider {
+  margin: 10%;
+  font-size: 14px;
+}
+.invite .content .venue-label {
+  font-size: 10px;
+  font-family: "SVN-GothamBook", sans-serif;
+}
+.invite .content .venue-name {
+  font-family: "MsClaudy", sans-serif;
+  font-size: 70px;
+  font-weight: 300;
+}
+.invite .content address {
+  font-family: "SVN-GothamLight", sans-serif;
+  font-style: italic;
+  font-size: 9px;
+}
+.invite .content .venue-action {
+  margin-top: 2%;
+}
+.invite .content .venue-action .map-btn {
+  display: block;
+  text-decoration: none;
+  color: white;
+  font-size: 10px;
+  font-family: "SVN-Gotham", sans-serif;
+  width: 323px;
+  padding: 1% 0 1%;
+  background-color: #363823;
+  border-radius: 15px;
+  border: none;
+  text-transform: uppercase;
+}
+@media (max-width: 500px) {
+  .invite .content .logo img {
+    max-width: 26vw;
+  }
+  .invite .content .parent-info {
+    font-size: 2.5vw;
+  }
+  .invite .content .invite-giatien .label {
+    font-size: 2.1vw;
+  }
+  .invite .content .invite-giatien .time {
+    font-size: 6.4vw;
+  }
+  .invite .content .invite-text .text {
+    font-size: 2.5vw;
+  }
+  .invite .content .invite-text .couple-name {
+    font-size: 12.2vw;
+  }
+  .invite .content .invite-text .couple-name .character {
+    font-size: 6vw;
+  }
+  .invite .content .couple-img img {
+    max-width: 47.6vw;
+  }
+  .invite .content .time-block .label {
+    font-size: 3vw;
+  }
+  .invite .content .time-block .days-of-week {
+    font-size: 4vw;
+  }
+  .invite .content .time-block .grid .month,
+  .invite .content .time-block .grid .year {
+    font-size: 4vw;
+  }
+  .invite .content .time-block .grid .date {
+    font-size: 12vw;
+  }
+  .invite .content .time-block .lunar-year {
+    font-size: 2.1vw;
+  }
+  .invite .content .divider img {
+    max-width: 15.2vw;
+  }
+  .invite .content .location-block .name {
+    font-size: 10.4vw;
+  }
+  .invite .content .location-block .address {
+    font-size: 2.66vw;
+  }
+  .invite .content .btn-wrap .map-btn {
+    font-size: 2.66vw;
+    width: 47.2vw;
+    border-radius: 3vw;
+    border: 0.4vw solid #363823;
+  }
+}
+
+.timeline {
+  width: 100%;
+}
+.timeline .content {
+  background: linear-gradient(rgba(255, 255, 255, 0.175), rgba(255, 255, 255, 0.282)), url("https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/timeline_bg.png") repeat center/contain;
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: center;
+  color: #363823;
+  padding: 10% 0 10%;
+}
+.timeline .content .title {
+  font-size: 48px;
+  font-family: "UVNBucThu", sans-serif;
+  font-weight: 300;
+  margin-bottom: 10%;
+}
+.timeline .content .timeline-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.timeline .content .timeline-container .timeline-item {
+  width: 20%;
+}
+.timeline .content .timeline-container .timeline-item .event-name {
+  font-family: "SVN-GothamLight", sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+.timeline .content .timeline-container .timeline-item .event-icon {
+  width: 100%;
+  aspect-ratio: 5/4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.timeline .content .timeline-container .timeline-item .event-icon img {
+  max-width: 36px;
+}
+.timeline .content .timeline-container .timeline-item .event-time {
+  font-family: "SVN-gothamBold", sans-serif;
+  font-size: 11px;
+}
+.timeline .content .timeline-container .timeline-item:nth-child(2) .event-icon img {
+  max-width: 42px;
+}
+.timeline .content .timeline-container .timeline-item:nth-child(3) .event-icon img {
+  max-width: 55px;
+}
+.timeline .content .dresscode {
+  margin-top: 15%;
+}
+.timeline .content .dresscode .title {
+  margin-bottom: 2%;
+}
+.timeline .content .dresscode .subtext {
+  font-family: "SVN-GothamBook", sans-serif;
+  font-size: 12px;
+}
+@media (max-width: 500px) {
+  .timeline .content .title {
+    font-size: 9.6vw;
+  }
+  .timeline .content .timeline-container .timeline-item .event-name {
+    font-size: 2.2vw;
+  }
+  .timeline .content .timeline-container .timeline-item .event-icon img {
+    max-width: 7.2vw;
+  }
+  .timeline .content .timeline-container .timeline-item .event-time {
+    font-size: 2.2vw;
+  }
+  .timeline .content .timeline-container .timeline-item:nth-child(2) .event-icon img {
+    max-width: 8.4vw;
+  }
+  .timeline .content .timeline-container .timeline-item:nth-child(3) .event-icon img {
+    max-width: 11vw;
+  }
+  .timeline .content .dresscode .subtext {
+    font-size: 2.4vw;
+  }
+}
+
+.rsvp {
+  width: 100%;
+}
+.rsvp .content {
+  aspect-ratio: 500/804;
+  background: url("https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/rsvp_bg.png") no-repeat bottom/100%;
+  width: 100%;
+  font-family: "SVN-Gotham", sans-serif;
+  padding: 10% 0 53%;
+  position: relative;
+}
+.rsvp .content .header {
+  padding: 5% 10% 0%;
+}
+.rsvp .content .header .illustration {
+  margin-bottom: 2%;
+}
+.rsvp .content .header .illustration img {
+  max-width: 76px;
+}
+.rsvp .content .header .title {
+  font-size: 52px;
+  font-weight: 300;
+  font-family: "UVNBucThu", sans-serif;
+  color: #363823;
+  letter-spacing: 1.2px;
+}
+.rsvp .content .header .en-title {
+  display: block;
+  margin-bottom: 5%;
+  font-size: 18px;
+  font-family: "Lora", sans-serif;
+}
+.rsvp .content .header .divider {
+  font-size: 12px;
+  margin: 8% 0;
+}
+.rsvp .content .header .subtext {
+  line-height: 2;
+  text-align: justify;
+  text-align-last: center;
+  font-family: "Lora", sans-serif;
+  color: #231f20;
+  font-size: 11px;
+}
+.rsvp .content .header .subtext .bold {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+.rsvp .content .header .en-subtext {
+  line-height: 2;
+  text-align: justify;
+  text-align-last: center;
+  font-family: "Lora", sans-serif;
+  color: #231f20;
+  font-size: 11px;
+}
+.rsvp .content .header .en-subtext .bold {
+  font-family: "SVN-gothamBold", sans-serif;
+}
+.rsvp .content .header hr {
+  border-top: 2px solid #363823;
+  margin: 6% 0;
+}
+.rsvp .content .rsvp-form {
+  display: block;
+  padding: 0% 10%;
+}
+.rsvp .content .rsvp-form .button-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6%;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper {
+  position: relative;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper input[type=radio] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.rsvp .content .rsvp-form .button-group .radio-label {
+  display: block;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border: 1px solid #363823;
+  aspect-ratio: 192/35;
+  color: #231f20;
+}
+.rsvp .content .rsvp-form .button-group .radio-label:hover {
+  background: #363823;
+  color: #fff;
+}
+.rsvp .content .rsvp-form .button-group .radio-label i {
+  display: block;
+}
+.rsvp .content .rsvp-form .button-group .radio-wrapper input[type=radio]:checked + .radio-label {
+  background: #363823;
+  color: #fff;
+}
+.rsvp .content .rsvp-form .form-group {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group input[type=text],
+.rsvp .content .rsvp-form .form-group input[type=number],
+.rsvp .content .rsvp-form .form-group textarea {
+  font-family: "SVN-Gotham", sans-serif;
+  width: 100%;
+  padding: 2% 4%;
+  border-radius: 8px;
+  background: transparent;
+  font-size: 10px;
+  color: #333;
+  outline: none;
+  border: 1px solid #363823;
+  transition: border-color 0.3s ease;
+}
+.rsvp .content .rsvp-form .form-group input[type=text]:focus,
+.rsvp .content .rsvp-form .form-group input[type=number]:focus,
+.rsvp .content .rsvp-form .form-group textarea:focus {
+  outline: none;
+}
+.rsvp .content .rsvp-form .form-group textarea {
+  aspect-ratio: 500/100;
+  resize: vertical;
+  font-family: inherit;
+}
+.rsvp .content .rsvp-form .form-group textarea::placeholder {
+  white-space: pre-line;
+  /* Cho phép hiển thị xuống dòng trong placeholder */
+}
+.rsvp .content .rsvp-form .form-group.guest-number {
+  display: flex;
+  justify-content: space-between;
+}
+.rsvp .content .rsvp-form .form-group.dietary {
+  margin: 8% 0 10%;
+}
+.rsvp .content .rsvp-form .form-group.dietary p {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group.dietary p.subtitle {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .form-group.other {
+  margin-bottom: 8%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info .dietary-label {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .form-group.guest-info .subtitle {
+  margin-bottom: 3%;
+}
+.rsvp .content .rsvp-form .message {
+  text-align: center;
+  margin: 10% 0 4%;
+}
+.rsvp .content .rsvp-form .message p {
+  margin-bottom: 2%;
+}
+.rsvp .content .rsvp-form .submit-btn {
+  width: 35%;
+  padding: 2% 0;
+  background: #363823;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 9px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease;
+  margin-top: 5%;
+  line-height: 1.5;
+}
+.rsvp .content .rsvp-form .submit-btn:hover {
+  background: rgb(102, 99, 71);
+}
+.rsvp .content .rsvp-form .submit-btn:active {
+  transform: scale(0.98);
+}
+.rsvp label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "SVN-Gotham", sans-serif;
+  margin-bottom: 2%;
+  text-transform: uppercase;
+  font-size: 9.11px;
+}
+@media (max-width: 500px) {
+  .rsvp .content .header .illustration img {
+    max-width: 15.2vw;
+  }
+  .rsvp .content .header .title {
+    font-size: 10.4vw;
+    letter-spacing: 0.24vw;
+  }
+  .rsvp .content .header .en-title {
+    font-size: 3.6vw;
+  }
+  .rsvp .content .header .subtext {
+    font-size: 1.8vw;
+  }
+  .rsvp .content .header .en-subtext {
+    font-size: 1.8vw;
+  }
+  .rsvp .content .header hr {
+    border-top: 0.4vw dashed #363823;
+  }
+  .rsvp .content .rsvp-form .button-group .radio-label {
+    border-radius: 1.6vw;
+    border: 0.2vw solid #363823;
+  }
+  .rsvp .content .rsvp-form .form-group input[type=text],
+  .rsvp .content .rsvp-form .form-group input[type=number],
+  .rsvp .content .rsvp-form .form-group textarea {
+    font-size: 2vw;
+    border-radius: 1.6vw;
+    border: 0.2vw solid #363823;
+  }
+  .rsvp .content .rsvp-form .form-group textarea {
+    /* keep aspect-ratio unchanged */
+  }
+  .rsvp .content .rsvp-form .submit-btn {
+    font-size: 1.8vw;
+    border-radius: 1.6vw;
+    letter-spacing: 0.2vw;
+  }
+  .rsvp label {
+    font-size: 1.822vw;
+  }
+}
+
+.album {
+  width: 100%;
+}
+.album .content {
+  width: 100%;
+  padding-bottom: 10%;
+}
+.album .content h2 {
+  font-family: "UVNBucThu", sans-serif;
+  font-size: 56px;
+  font-weight: 300;
+  color: #363823;
+  margin: 10% 0 0%;
+}
+.album .content .subtext {
+  font-family: "Lora", sans-serif;
+  font-size: 11px;
+  padding: 0 10%;
+  margin-bottom: 5%;
+}
+.album .content .swiper {
+  width: 100%;
+  margin: 0 auto;
+}
+.album .content .swiper .swiper-pagination-bullet-active {
+  background: rgb(215, 215, 215);
+}
+.album .content .main-swiper {
+  aspect-ratio: 2/3;
+  overflow: hidden;
+}
+.album .content .main-swiper .swiper-button-next,
+.album .content .main-swiper .swiper-button-prev {
+  color: rgb(215, 215, 215);
+}
+.album .content .main-swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.album .content .thumb-swiper {
+  box-sizing: border-box;
+  padding: 0;
+}
+.album .content .thumb-swiper .swiper-slide {
+  aspect-ratio: 1;
+  opacity: 0.7;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  background-color: #363823;
+}
+.album .content .thumb-swiper .swiper-slide-thumb-active {
+  opacity: 1;
+  border-radius: 5px;
+  border: 1px solid #363823;
+}
+.album .content .thumb-swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 500px) {
+  .album .content h2 {
+    font-size: 11.2vw;
+  }
+  .album .content .subtext {
+    font-size: 2.2vw;
+  }
+  .album .content .swiper .swiper-button-next:after,
+  .album .content .swiper .swiper-button-prev:after {
+    font-size: 8.8vw;
+  }
+  .album .content .swiper .swiper-pagination-bullet {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+  .album .content .swiper .main-swiper {
+    border-radius: 2vw;
+  }
+  .album .content .swiper .thumb-swiper .swiper-slide {
+    border-radius: 1vw;
+  }
+  .album .content .swiper .thumb-swiper .swiper-slide-thumb-active {
+    border-radius: 1vw;
+    border: 0.2vw solid #363823;
+  }
+  .album .content .swiper .thumb-swiper img {
+    border-radius: 2vw;
+  }
+}
+
+.swiper {
+  margin: 0 auto;
+  padding: 2% 0 0% !important;
+}
+
+/*# sourceMappingURL=main.css.map */

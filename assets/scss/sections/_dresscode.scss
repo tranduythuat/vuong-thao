@@ -1,0 +1,102 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.dresscode {
+    width: 100%;
+
+    .content {
+        width: 100%;
+        @include flex-center;
+        flex-direction: column;
+        padding: 20% 0 15%;
+
+        .divider {
+            img {
+                max-width: 76px;
+            }
+        }
+
+        .title {
+            font-family: $font-PinyonScriptRegular;
+            font-size: 36px;
+            color: $title-color;
+            margin: 5% 0 3%;
+        }
+
+        .subtext {
+            line-height: 2;
+            margin-bottom: 8%;
+            font-size: 9.11px;
+
+            .bold {
+                font-family: $font-gothamBold;
+            }
+        }
+
+        .grid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 6%;
+
+            .item {
+                .icon {
+                    margin-bottom: 10%;
+
+                    img {
+                        max-width: 43px;
+                    }
+                }
+
+                .label {
+                    font-size: 9.11px;
+                    text-transform: uppercase;
+                }
+            }
+        }
+
+        .divider-01 {
+            margin-top: 10%;
+
+            img {
+                max-width: 174px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .divider {
+                img {
+                    max-width: calc((76 / 500) * 100vw);
+                }
+            }
+
+            .title {
+                font-size: calc((36 / 500) * 100vw);
+            }
+
+            .subtext {
+                font-size: calc((9.11 / 500) * 100vw);
+            }
+
+            .grid {
+                .item {
+                    .icon {
+                        img {
+                            max-width: calc((43 / 500) * 100vw);
+                        }
+                    }
+
+                    .label {
+                        font-size: calc((9.11 / 500) * 100vw);
+                    }
+                }
+            }
+
+            .divider-01 {
+                img {
+                    max-width: calc((174 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}

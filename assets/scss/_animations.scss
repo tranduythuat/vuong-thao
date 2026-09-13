@@ -1,0 +1,100 @@
+// Container cần perspective để có hiệu ứng 3D thật
+.image-wrapper {
+    perspective: 1000px; // độ sâu của 3D
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0;
+    img {
+        width: 320px;
+        border-radius: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+}
+
+// Hiệu ứng flip-in 3D
+[data-animate="flip"], [data-animate="flip-yoyo"] {
+    transform-origin: left center;
+    transform: rotateY(-120deg) scale(0.9);
+    opacity: 0;
+    filter: brightness(0.6);
+    backface-visibility: hidden;
+    transition: none;
+}
+
+[data-animate="flip"].active, [data-animate="flip-yoyo"].active {
+    opacity: 1;
+    transform: rotateY(0deg);
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    top: 100px;
+    border-radius: 12px;
+}
+  
+.red   { background: #e74c3c; }
+.blue  { background: #3498db; }
+.green { background: #2ecc71; }
+
+
+// 
+
+
+.shake-text {
+    animation: shakeWithPause 3s ease-in-out infinite;
+}
+
+@keyframes shakeWithPause {
+    /* Rung lắc nhẹ - kéo dài hơn */
+    0%, 100% {
+        transform: translateX(0);
+    }
+    3% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    6% {
+        transform: translateX(3px) rotate(1deg);
+    }
+    9% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    12% {
+        transform: translateX(3px) rotate(1deg);
+    }
+    15% {
+        transform: translateX(-3px) rotate(-1deg);
+    }
+    18% {
+        transform: translateX(3px) rotate(1deg);
+    }
+    21% {
+        transform: translateX(-2px) rotate(-0.5deg);
+    }
+    24% {
+        transform: translateX(2px) rotate(0.5deg);
+    }
+    27% {
+        transform: translateX(-2px) rotate(-0.5deg);
+    }
+    30% {
+        transform: translateX(2px) rotate(0.5deg);
+    }
+    33% {
+        transform: translateX(-1px) rotate(-0.3deg);
+    }
+    36% {
+        transform: translateX(1px) rotate(0.3deg);
+    }
+    39% {
+        transform: translateX(-1px) rotate(-0.3deg);
+    }
+    42% {
+        transform: translateX(0) rotate(0deg);
+    }
+    /* Nghỉ một đoạn */
+    42%, 100% {
+        transform: translateX(0) rotate(0deg);
+    }
+}

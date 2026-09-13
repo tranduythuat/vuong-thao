@@ -1,0 +1,87 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.gallery {
+    width: 100%;
+
+    .content {
+        width: 90%;
+        padding: 15% 2%;
+
+        .box-img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .row:nth-child(1) {
+            width: 100%;
+            aspect-ratio: 424 / 245;
+            margin-bottom: 2%;
+
+            .box-img {
+                background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/gallery/gallery05.webp') no-repeat 100% 71% / 100%;
+            }
+        }
+
+        .row:nth-child(2) {
+            width: 100%;
+            aspect-ratio: 424 / 482;
+            display: flex;
+            justify-content: space-between;
+
+            .column {
+                width: 49%;
+            }
+
+            .column:nth-child(1) {
+
+                .row-child:nth-child(1) {
+                    width: 100%;
+                    aspect-ratio: 221 / 224;
+                    margin-bottom: 3%;
+
+                    .box-img {
+                        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/gallery/gallery02.webp') no-repeat 100% 25% / 100%;
+                    }
+                }
+
+                .row-child:nth-child(2) {
+                    aspect-ratio: 221 / 295;
+                    width: 100%;
+
+                    .box-img {
+                        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/gallery/gallery01.webp') no-repeat 100% 100% / 100%;
+                    }
+                }
+            }
+
+            .column:nth-child(2) {
+
+                .row-child:nth-child(1) {
+                    width: 100%;
+                    aspect-ratio: 221 / 295;
+                    margin-bottom: 3%;
+
+                    .box-img {
+                        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/gallery/gallery04.webp') no-repeat 100% 100% / 100%;
+                    }
+                }
+
+                .row-child:nth-child(2) {
+                    width: 100%;
+                    aspect-ratio: 221 / 224;
+
+                    .box-img {
+                        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/gallery/gallery03.webp') no-repeat 0% 73% / 100%;
+                    }
+                }
+            }
+        }
+
+        &.nha-trai-21-9 {
+            padding-top: 1%;
+        }
+
+        @media (max-width: 500px) {}
+    }
+}

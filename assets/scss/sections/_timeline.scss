@@ -1,0 +1,120 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.timeline {
+    width: 100%;
+
+    .content {
+        background: linear-gradient(rgba(255, 255, 255, 0.175), rgba(255, 255, 255, 0.282)),
+            url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/timeline_bg.png') repeat center / contain;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+        color: #363823ff;
+        padding: 10% 0 10%;
+
+        .title {
+            font-size: 48px;
+            font-family: $font-UVNBucThu;
+            font-weight: 300;
+            margin-bottom: 10%;
+        }
+
+        .timeline-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .timeline-item {
+                width: 20%;
+
+                .event-name {
+                    font-family: $font-gothamLight;
+                    font-size: 11px;
+                    font-weight: 300;
+                    text-transform: uppercase;
+                }
+
+                .event-icon {
+                    width: 100%;
+                    aspect-ratio: 5 / 4;
+                    @include flex-center;
+
+                    img {
+                        max-width: 36px;
+                    }
+                }
+
+                .event-time {
+                    font-family: $font-gothamBold;
+                    font-size: 11px;
+                }
+
+                &:nth-child(2) .event-icon img {
+                    max-width: 42px;
+                }
+
+                &:nth-child(3) .event-icon img {
+                    max-width: 55px;
+                }
+            }
+
+        }
+
+        .dresscode {
+            margin-top: 15%;
+
+            .title {
+                margin-bottom: 2%;
+            }
+
+            .subtext {
+                font-family: $font-GothamBook;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .title {
+                font-size: calc((48 / 500) * 100vw);
+            }
+
+            .timeline-container {
+
+                .timeline-item {
+
+                    .event-name {
+                        font-size: calc((11 / 500) * 100vw);
+                    }
+
+                    .event-icon {
+                        img {
+                            max-width: calc((36 / 500) * 100vw);
+                        }
+                    }
+
+                    .event-time {
+                        font-size: calc((11 / 500) * 100vw);
+                    }
+
+                    &:nth-child(2) .event-icon img {
+                        max-width: calc((42 / 500) * 100vw);
+                    }
+
+                    &:nth-child(3) .event-icon img {
+                        max-width: calc((55 / 500) * 100vw);
+                    }
+                }
+
+            }
+
+            .dresscode {
+                .subtext {
+                    font-size: calc((12 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}

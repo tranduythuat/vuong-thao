@@ -1,0 +1,314 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.rsvp {
+    width: 100%;
+
+    .content {
+        aspect-ratio: 500 / 804;
+        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/rsvp_bg.png') no-repeat bottom / 100%;
+        width: 100%;
+        font-family: $font-Gotham;
+        padding: 10% 0 53%;
+        position: relative;
+
+        .header {
+            padding: 5% 10% 0%;
+
+            .illustration {
+                margin-bottom: 2%;
+
+                img {
+                    max-width: 76px;
+                }
+            }
+
+            .title {
+                font-size: 52px;
+                font-weight: 300;
+                font-family: $font-UVNBucThu;
+                color: $title-color;
+                letter-spacing: 1.2px;
+            }
+
+            .en-title {
+                display: block;
+                margin-bottom: 5%;
+                font-size: 18px;
+                font-family: $font-lora;
+                // text-transform: unset;
+            }
+
+            .divider {
+                font-size: 12px;
+                margin: 8% 0;
+            }
+
+            .subtext {
+                line-height: 2;
+                text-align: justify;
+                text-align-last: center;
+                font-family: $font-lora;
+                color: #231f20ff;
+                font-size: 11px;
+
+                .bold {
+                    font-family: $font-gothamBold;
+                }
+            }
+
+            .en-subtext {
+                line-height: 2;
+                text-align: justify;
+                text-align-last: center;
+                font-family: $font-lora;
+                color: #231f20ff;
+                font-size: 11px;
+
+                .bold {
+                    font-family: $font-gothamBold;
+                }
+            }
+
+            hr {
+                border-top: 2px solid $secondary-color;
+                margin: 6% 0;
+            }
+        }
+
+        .rsvp-form {
+            display: block;
+            padding: 0% 10%;
+
+            .button-group {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 6%;
+
+                .radio-wrapper {
+                    position: relative;
+                }
+
+                .radio-wrapper input[type="radio"] {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                }
+
+                .radio-label {
+                    display: block;
+                    border-radius: 8px;
+                    background: transparent;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    text-transform: uppercase;
+                    text-align: center;
+                    display: flex;
+                    align-items: center;
+                    flex-direction: column;
+                    border: 1px solid $secondary-color;
+                    aspect-ratio: 192 / 35;
+                    color: #231f20ff;
+
+                    &:hover {
+                        background: $text-color;
+                        color: #fff;
+                    }
+
+                    i {
+                        display: block;
+                    }
+                }
+
+                .radio-wrapper input[type="radio"]:checked+.radio-label {
+                    background: $text-color;
+                    color: #fff;
+                }
+            }
+
+            .form-group {
+                margin-bottom: 3%;
+
+                input[type="text"],
+                input[type="number"],
+                textarea {
+                    font-family: $font-Gotham;
+                    width: 100%;
+                    padding: 2% 4%;
+                    border-radius: 8px;
+                    background: transparent;
+                    font-size: 10px;
+                    color: #333;
+                    outline: none;
+                    border: 1px solid $secondary-color;
+                    transition: border-color 0.3s ease;
+                    // text-transform: uppercase;
+                }
+
+                input[type="text"]:focus,
+                input[type="number"]:focus,
+                textarea:focus {
+                    outline: none;
+                }
+
+                textarea {
+                    aspect-ratio: 500 / 100;
+                    resize: vertical;
+                    font-family: inherit;
+                }
+
+                textarea::placeholder {
+                    white-space: pre-line;
+                    /* Cho phép hiển thị xuống dòng trong placeholder */
+                }
+            }
+
+            .form-group.guest-number {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .form-group.dietary {
+                margin: 8% 0 10%;
+
+                p {
+                    margin-bottom: 3%;
+                }
+
+                p.subtitle {
+                    margin-bottom: 3%;
+                }
+            }
+
+            .form-group.other {
+                margin-bottom: 8%;
+            }
+
+            .form-group.guest-info {
+                margin-bottom: 2%;
+
+                .dietary-label {
+                    margin-bottom: 2%;
+                }
+
+                .subtitle {
+                    margin-bottom: 3%;
+                }
+            }
+
+
+            .message {
+                text-align: center;
+                margin: 10% 0 4%;
+
+                p {
+                    margin-bottom: 2%;
+                }
+            }
+
+            .submit-btn {
+                width: 35%;
+                padding: 2% 0;
+                background: $secondary-color;
+                color: white;
+                border: none;
+                border-radius: 8px;
+                font-weight: 600;
+                font-size: 9px;
+                cursor: pointer;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                transition: background 0.3s ease;
+                margin-top: 5%;
+                line-height: 1.5;
+            }
+
+            .submit-btn:hover {
+                background: rgb(102, 99, 71);
+                // opacity: 0.9;
+            }
+
+            .submit-btn:active {
+                transform: scale(0.98);
+            }
+
+        }
+    }
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: $font-Gotham;
+        margin-bottom: 2%;
+        text-transform: uppercase;
+        font-size: 9.11px;
+    }
+
+    @media (max-width: 500px) {
+        .content {
+            .header {
+                .illustration {
+                    img {
+                        max-width: calc((76 / 500) * 100vw);
+                    }
+                }
+
+                .title {
+                    font-size: calc((52 / 500) * 100vw);
+                    letter-spacing: calc((1.2 / 500) * 100vw);
+                }
+
+                .en-title {
+                    font-size: calc((18 / 500) * 100vw);
+                }
+
+                .subtext {
+                    font-size: calc((9 / 500) * 100vw);
+                }
+
+                .en-subtext {
+                    font-size: calc((9 / 500) * 100vw);
+                }
+
+                hr {
+                    border-top: calc((2 / 500) * 100vw) dashed $secondary-color;
+                }
+            }
+
+            .rsvp-form {
+                .button-group {
+                    .radio-label {
+                        border-radius: calc((8 / 500) * 100vw);
+                        border: calc((1 / 500) * 100vw) solid $secondary-color;
+                    }
+                }
+
+                .form-group {
+
+                    input[type="text"],
+                    input[type="number"],
+                    textarea {
+                        font-size: calc((10 / 500) * 100vw);
+                        border-radius: calc((8 / 500) * 100vw);
+                        border: calc((1 / 500) * 100vw) solid $secondary-color;
+                    }
+
+                    textarea {
+                        /* keep aspect-ratio unchanged */
+                    }
+                }
+
+                .submit-btn {
+                    font-size: calc((9 / 500) * 100vw);
+                    border-radius: calc((8 / 500) * 100vw);
+                    letter-spacing: calc((1 / 500) * 100vw);
+                }
+            }
+        }
+
+        label {
+            font-size: calc((9.11 / 500) * 100vw);
+        }
+    }
+}

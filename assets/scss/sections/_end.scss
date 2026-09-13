@@ -1,0 +1,94 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.end {
+    width: 100%;
+
+    .content {
+        aspect-ratio: 500 / 760;
+        width: 100%;
+        background: url('../../assets/images/end_bg.png') no-repeat center / cover;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 10%;
+        perspective: 1000px;
+
+        .title {
+            font-family: $font-UVNBucThu;
+            font-size: 40px;
+            line-height: .9;
+            margin-top: 20%;
+        }
+
+        .logo {
+            margin-top: 4%;
+            margin-bottom: 2%;
+
+            img {
+                max-width: 65px;
+            }
+        }
+
+        .couple-img {
+            aspect-ratio: 279 / 80;
+            width: 60%;
+            background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/HongAnh-QuangAnh/couple/end.jpg') no-repeat 50% 84% / cover;
+        }
+
+        .text-block {
+            max-width: 338px;
+            width: 100%;
+            @include flex-center;
+            flex-direction: column;
+            padding: 5% 2% 0;
+
+            p {
+                line-height: 2;
+                margin-bottom: 5%;
+                text-align: justify;
+                text-align-last: center;
+                font-size: 9.3px;
+            }
+
+            .quote {
+                margin-bottom: 5%;
+
+                img {
+                    max-width: 26px;
+                }
+
+                &.quote-2 {
+                    transform: rotate(180deg);
+                }
+            }
+        }
+
+        @media (max-width: 500px) {
+            .title {
+                font-size: calc((40 / 500) * 100vw);
+            }
+
+            .logo {
+                img {
+                    max-width: calc((65 / 500) * 100vw);
+                }
+            }
+
+            .text-block {
+                max-width: calc((338 / 500) * 100vw);
+
+                p {
+                    font-size: calc((9.3 / 500) * 100vw);
+                }
+
+                .quote {
+                    img {
+                        max-width: calc((26 / 500) * 100vw);
+                    }
+                }
+            }
+        }
+    }
+}

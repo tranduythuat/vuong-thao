@@ -1,0 +1,85 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.hero {
+    width: 100%;
+
+    .content {
+        padding: 8% 0;
+        @include flex-center;
+        flex-direction: column;
+        width: 100%;
+
+        .logo {
+            margin-bottom: 5%;
+
+            img {
+                max-width: 141px;
+            }
+        }
+
+        .invitation-text {
+            font-family: $font-Gotham;
+            font-size: 11px;
+            color: #363823ff;
+            text-transform: uppercase;
+            margin-bottom: 1%;
+
+            &.sub {
+                font-family: $font-gothamLight;
+            }
+        }
+
+        .couple-img {
+            margin: 8% 0 5%;
+
+            img {
+                max-width: 300px;
+            }
+        }
+
+        .couple-names {
+            font-family: $font-MsClaudy;
+            font-size: 82px;
+            font-weight: 300;
+            letter-spacing: 5px;
+            word-spacing: 15px;
+        }
+
+        .illustration {
+            img {
+                max-width: 76px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .logo {
+                img {
+                    max-width: calc((141 / 500) * 100vw);
+                }
+            }
+
+            .invitation-text {
+                font-size: calc((11 / 500) * 100vw);
+            }
+
+            .couple-img {
+                img {
+                    max-width: calc((300 / 500) * 100vw);
+                }
+            }
+
+            .couple-names {
+                font-size: calc((82 / 500) * 100vw);
+                letter-spacing: calc((5 / 500) * 100vw);
+                word-spacing: calc((15 / 500) * 100vw);
+            }
+
+            .illustration {
+                img {
+                    max-width: calc((76 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}

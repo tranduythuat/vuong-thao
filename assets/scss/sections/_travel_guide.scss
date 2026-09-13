@@ -1,0 +1,114 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.travel-guide {
+    width: 100%;
+
+    .content {
+        width: 100%;
+        aspect-ratio: 500 / 700;
+        @include flex-center;
+        flex-direction: column;
+
+        .divider {
+
+            img {
+                max-width: 71px;
+            }
+        }
+
+        .title {
+            font-family: $font-MTDPortrait;
+            color: $title-color;
+            font-size: 43px;
+            margin: 5% 0 8%;
+        }
+
+
+        .guide {
+            width: 85%;
+            color: $text-color;
+            @include flex-center;
+
+            .faq-container {
+                width: 100%;
+
+                .faq-item {
+                    border-radius: 8px;
+                    overflow: hidden;
+
+                    .faq-header {
+                        width: 100%;
+                        background: transparent;
+                        font-family: $font-gothamBold;
+                        color: $text-color;
+                        padding: 2% 0% 1%;
+                        margin-bottom: 2%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        font-size: 10px;
+                        cursor: pointer;
+                        border: none;
+                        text-transform: uppercase;
+                        border-bottom: 2px solid $text-color;
+
+                        .icon {
+                            font-size: 20px;
+                            font-weight: 900;
+                            line-height: 1;
+                        }
+                    }
+
+                    .faq-content {
+                        color: $text-color;
+                        height: 0;
+                        overflow: hidden;
+
+                        a {
+                            text-decoration: none;
+                            color: $text-color;
+                            display: block;
+                            text-align: center;
+                            padding: 3% 0 0;
+                            font-size: 10px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+        }
+
+        @media (max-width: 500px) {
+            .divider {
+                img {
+                    max-width: calc((71 / 500) * 100vw);
+                }
+            }
+
+            .title {
+                font-size: calc((43 / 500) * 100vw);
+            }
+
+            .guide {
+                .faq-container {
+                    .faq-item {
+                        .faq-header {
+                            font-size: calc((10 / 500) * 100vw);
+
+                            .icon {
+                                font-size: calc((20 / 500) * 100vw);
+                            }
+                        }
+
+                        .faq-content {
+                            a {
+                                font-size: calc((10 / 500) * 100vw);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

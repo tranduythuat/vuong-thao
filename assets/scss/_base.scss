@@ -1,0 +1,145 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    font-size: 12px;
+    margin: 0;
+    overflow-x: hidden;
+    @include flex-center;
+    flex-direction: column;
+    position: relative;
+}
+
+body.page-locked {
+    overflow: hidden;
+    touch-action: none;
+}
+
+img {
+    max-width: 500px;
+    width: 100%;
+    height: auto;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+.container {
+    // background: url('../../assets/images/base_bg.png') repeat top / 100%;
+    background-color: #fff8eeff;
+    max-width: 500px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    box-shadow: $shadow-default;
+    color: $text-color;
+    font-family: $font-MontserratBold;
+    font-size: 9.11px;
+    // display: none;
+    // opacity: 0;
+}
+
+/* music */
+.music-box {
+    display: flex;
+    position: fixed;
+    bottom: 10px;
+    right: 1%;
+    cursor: pointer;
+    z-index: 9999;
+
+    .label {
+        @include flex-center;
+        position: relative;
+        transform-origin: right center;
+        position: absolute;
+        right: 39%;
+        max-width: 300px;
+        width: 190%;
+        height: 100%;
+        overflow: hidden;
+
+        .musicLabel {
+            width: 100%;
+            text-align: left;
+            font-size: 12px;
+            background-color: #8db6be;
+            color: #fff;
+            padding: 3% 12%;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            border: 1px solid rgba(48, 44, 42, 0.124);
+            opacity: .9;
+        }
+    }
+
+    .player {
+        max-width: 55px;
+        width: 105%;
+        aspect-ratio: 1;
+        z-index: 9999;
+        @include flex-center;
+    }
+}
+
+.player #iconSvg {
+    width: 100%;
+    height: 100%;
+}
+
+
+@media (max-width: 500px) {
+    .container {
+        font-size: calc((9.11 / 500) * 100vw);
+    }
+
+    .music-box {
+        bottom: calc((10 / 500) * 100vw);
+
+        .label {
+            max-width: calc((300 / 500) * 100vw);
+
+            .musicLabel {
+                font-size: calc((12 / 500) * 100vw);
+            }
+        }
+
+        .player {
+            max-width: calc((55 / 500) * 100vw);
+        }
+    }
+}
+
+.spin {
+    animation: spin 4s linear infinite;
+}
+
+/* Định nghĩa hoạt ảnh xoay */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

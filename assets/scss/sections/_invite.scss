@@ -1,0 +1,169 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.invite {
+    width: 100%;
+
+    .content {
+        background: url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/invite_bg.png') no-repeat bottom / 100%;
+        width: 100%;
+        display: flex;
+        justify-content: start;
+        flex-direction: column;
+        align-items: center;
+        padding: 15% 0 26%;
+        color: #363823ff;
+
+        .subtitle {
+            font-family: $font-gothamLight;
+            font-size: 10px;
+            margin-bottom: 2%;
+        }
+
+        .event-date {
+            font-family: $font-Gotham;
+            font-size: 18px;
+            text-transform: uppercase;
+        }
+
+        .lunar-date {
+            font-family: $font-gothamLight;
+            font-style: italic;
+            font-size: 11px;
+        }
+
+        .divider {
+            margin: 10%;
+            font-size: 14px;
+        }
+
+        .venue-label {
+            font-size: 10px;
+            font-family: $font-GothamBook;
+        }
+
+        .venue-name {
+            font-family: $font-MsClaudy;
+            font-size: 70px;
+            font-weight: 300;
+        }
+
+        address {
+            font-family: $font-gothamLight;
+            font-style: italic;
+            font-size: 9px;
+        }
+
+
+        .venue-action {
+            margin-top: 2%;
+
+            .map-btn {
+                display: block;
+                text-decoration: none;
+                color: #ffffffff;
+                font-size: 10px;
+                font-family: $font-Gotham;
+                width: 323px;
+                padding: 1% 0 1%;
+                background-color: #363823ff;
+                border-radius: 15px;
+                border: none;
+                text-transform: uppercase;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .logo {
+                img {
+                    max-width: calc((130 / 500) * 100vw);
+                }
+            }
+
+            .parent-info {
+                font-size: calc((12.5 / 500) * 100vw);
+            }
+
+            .invite-giatien {
+                .label {
+                    font-size: calc((10.5 / 500) * 100vw);
+                }
+
+                .time {
+                    font-size: calc((32 / 500) * 100vw);
+                }
+            }
+
+            .invite-text {
+                .text {
+                    font-size: calc((12.5 / 500) * 100vw);
+                }
+
+                .couple-name {
+                    font-size: calc((61 / 500) * 100vw);
+
+                    .character {
+                        font-size: calc((30 / 500) * 100vw);
+                    }
+                }
+            }
+
+            .couple-img {
+                img {
+                    max-width: calc((238 / 500) * 100vw);
+                }
+            }
+
+            .time-block {
+                .label {
+                    font-size: calc((15 / 500) * 100vw);
+                }
+
+                .days-of-week {
+                    font-size: calc((20 / 500) * 100vw);
+                }
+
+                .grid {
+
+                    .month,
+                    .year {
+                        font-size: calc((20 / 500) * 100vw);
+                    }
+
+                    .date {
+                        font-size: calc((60 / 500) * 100vw);
+                    }
+                }
+
+                .lunar-year {
+                    font-size: calc((10.5 / 500) * 100vw);
+                }
+            }
+
+            .divider {
+                img {
+                    max-width: calc((76 / 500) * 100vw);
+                }
+            }
+
+            .location-block {
+                .name {
+                    font-size: calc((52 / 500) * 100vw);
+                }
+
+                .address {
+                    font-size: calc((13.3 / 500) * 100vw);
+                }
+            }
+
+            .btn-wrap {
+                .map-btn {
+                    font-size: calc((13.3 / 500) * 100vw);
+                    width: calc((236 / 500) * 100vw);
+                    border-radius: calc((15 / 500) * 100vw);
+                    border: calc((2 / 500) * 100vw) solid $text-color;
+                }
+            }
+        }
+    }
+}

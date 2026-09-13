@@ -1,0 +1,62 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+.parents {
+    width: 100%;
+
+    .content {
+        width: 100%;
+        background: linear-gradient(rgba(255, 255, 255, 0.175), rgba(255, 255, 255, 0.282)),
+            url('https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/parents_bg.png') no-repeat center / cover;
+        padding: 7%;
+        color: #363823ff;
+
+        .parents-group {
+            width: 100%;
+
+
+            .parent-name {
+                font-family: $font-Gotham;
+                font-weight: 300;
+                text-transform: uppercase;
+                font-size: 12px;
+                margin-bottom: 1%;
+            }
+
+            address {
+                font-family: $font-gothamLight;
+                font-style: italic;
+                font-size: 10px;
+                letter-spacing: 1px;
+            }
+
+            &.groom-side {
+                text-align: left;
+                margin-bottom: 6%;
+            }
+
+            &.bride-side {
+                text-align: right;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .logo {
+                img {
+                    max-width: calc((141 / 500) * 100vw);
+                }
+            }
+
+            .parents-group {
+                .parent-name {
+                    font-size: calc((12 / 500) * 100vw);
+                }
+
+                address {
+                    font-size: calc((10 / 500) * 100vw);
+                    letter-spacing: calc((1 / 500) * 100vw);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,130 @@
+@use "../variables" as *;
+@use "../mixins" as *;
+
+
+.album {
+    width: 100%;
+
+    .content {
+        width: 100%;
+        padding-bottom: 10%;
+
+        h2 {
+            font-family: $font-UVNBucThu;
+            font-size: 56px;
+            font-weight: 300;
+            color: $title-color;
+            margin: 10% 0 0%
+        }
+
+        .subtext {
+            font-family: $font-lora;
+            font-size: 11px;
+            padding: 0 10%;
+            margin-bottom: 5%;
+        }
+
+        .swiper {
+            width: 100%;
+            margin: 0 auto;
+
+            .swiper-pagination-bullet-active {
+                background: rgb(215, 215, 215);
+            }
+        }
+
+        .main-swiper {
+            aspect-ratio: 2 / 3;
+            // border-radius: 10px;
+            overflow: hidden;
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                color: rgb(215, 215, 215);
+            }
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        .thumb-swiper {
+            box-sizing: border-box;
+            padding: 0;
+
+            .swiper-slide {
+                // width: 25%;
+                aspect-ratio: 1;
+                opacity: 0.7;
+                cursor: pointer;
+                transition: opacity 0.3s;
+                background-color: $text-color;
+                // border-radius: 5px;
+            }
+
+            .swiper-slide-thumb-active {
+                opacity: 1;
+                border-radius: 5px;
+                border: 1px solid $text-color;
+            }
+
+
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+
+        @media (max-width: 500px) {
+            h2 {
+                font-size: calc((56 / 500) * 100vw);
+            }
+
+            .subtext {
+                font-size: calc((11 / 500) * 100vw);
+            }
+
+            .swiper {
+
+                .swiper-button-next:after,
+                .swiper-button-prev:after {
+                    font-size: calc((44 / 500) * 100vw);
+                }
+
+                .swiper-pagination-bullet {
+                    width: calc((16 / 500) * 100vw);
+                    height: calc((16 / 500) * 100vw);
+                }
+
+                .main-swiper {
+                    border-radius: calc((10 / 500) * 100vw);
+                }
+
+                .thumb-swiper {
+                    .swiper-slide {
+                        border-radius: calc((5 / 500) * 100vw);
+                    }
+
+                    .swiper-slide-thumb-active {
+                        border-radius: calc((5 / 500) * 100vw);
+                        border: calc((1 / 500) * 100vw) solid $text-color;
+                    }
+
+                    img {
+                        border-radius: calc((10 / 500) * 100vw);
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.swiper {
+    margin: 0 auto;
+    padding: 2% 0 0% !important;
+}
