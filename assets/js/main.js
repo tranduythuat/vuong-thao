@@ -476,11 +476,11 @@
     const section = document.querySelector(".timeline");
     if (!section) return;
 
-    const content = section.querySelector(".timeline-content");
+    const content = section.querySelector(".timeline-container");
     // const bg = section.querySelector(".cover-bg");
     // const divider = section.querySelector(".divider-flower");
     // const title = section.querySelector(".timeline-title");
-    const items = section.querySelectorAll(".tl-item");
+    const items = section.querySelectorAll(".timeline-item");
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -531,9 +531,9 @@
     // Animate từng item theo thứ tự
     // =========================
     items.forEach((item, index) => {
+      const label = item.querySelector(".event-name");
       const icon = item.querySelector(".icon-animate");
-      const time = item.querySelector(".time");
-      const label = item.querySelector(".label");
+      const time = item.querySelector(".event-time");
       const overlap = index === 0 ? 0 : 0.2 + index * 0.1;
 
       // Item fade
@@ -542,40 +542,11 @@
         {
           opacity: 0,
           y: 60,
-          duration: 0.6,
+          duration: 1,
           ease: "power2.out"
         },
-        `-=1.2`
+        `-=1.5`
       );
-
-      // Icon pop
-      if (icon) {
-        tl.from(
-          icon,
-          {
-            scale: 0,
-            rotation: -120,
-            opacity: 0,
-            duration: 0.7,
-            ease: "back.out(1.6)"
-          },
-          "<0.2"
-        );
-      }
-
-      // Time fade
-      if (time) {
-        tl.from(
-          time,
-          {
-            opacity: 0,
-            x: -50,
-            duration: 1,
-            ease: "power2.out"
-          },
-          "<0.2"
-        );
-      }
 
       // Time fade
       if (label) {
@@ -590,6 +561,37 @@
           "<0.2"
         );
       }
+
+      // Icon pop
+      if (icon) {
+        tl.from(
+          icon,
+          {
+            scale: 0,
+            rotation: -220,
+            opacity: 0,
+            duration: 0.8,
+            ease: "back.out(1.6)"
+          },
+          "<0.5"
+        );
+      }
+
+      // Time fade
+      if (time) {
+        tl.from(
+          time,
+          {
+            opacity: 0,
+            x: -50,
+            duration: 0.8,
+            ease: "power2.out"
+          },
+          "<0.5"
+        );
+      }
+
+
     });
   }
 
@@ -1032,7 +1034,7 @@
     // loadGuest();
     initMusic();
     // initDresscodeAnimation();
-    // initTimeline();
+    initTimeline();
     // initFAQ();
     initRSVP();
     // startCountdown(new Date("2026-09-19T11:00:00"));

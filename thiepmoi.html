@@ -48,19 +48,20 @@
     <section class="hero">
       <div class="content">
         <div class="logo">
-          <img src="assets/images/logo.png" alt="">
+          <img src="assets/images/logo.png" data-animate="flip-vertical-left" alt="">
         </div>
-        <p class="invitation-text">Trân trọng kính mời Anh/Chị/Bạn/Em
+        <p class="invitation-text" data-animate="fade-in">Trân trọng kính mời Anh/Chị/Bạn/Em
         </p>
-        <p class="invitation-text sub">đến tham dự LỄ Thành Hôn</p>
+        <p class="invitation-text sub" data-animate="fade-in">đến tham dự LỄ Thành Hôn</p>
 
         <div class="couple-img">
-          <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/hero.webp" alt="">
+          <img src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/vuong-thao/hero.webp"
+            data-animate="flip-vertical-left" alt="">
         </div>
 
-        <h1 class="couple-names">Vuong &amp; Thao</h1>
+        <h1 class="couple-names" data-animate="fade-in" data-animate-scroll-start="top 95%">Vuong &amp; Thao</h1>
 
-        <div class="illustration">
+        <div class="illustration" data-animate="fade-in" data-animate-scroll-start="top 98%">
           <img src="assets/images/illustration.png" alt="Swan Illustration">
         </div>
       </div>
@@ -68,15 +69,15 @@
 
     <section class="parents">
       <div class="content">
-        <div class="parents-group groom-side">
-          <h2 class="parent-name">MR. Steven Thai | MRS. Nguyễn Thị Thu Thảo</h2>
+        <div class="parents-group groom-side" data-animate="fade-left">
+          <h2 class="parent-name">Ông Steven Thai | Bà Nguyễn Thị Thu Thảo</h2>
           <address class="parent-address">
             Thornton, CO - United States
           </address>
         </div>
 
-        <div class="parents-group bride-side">
-          <h2 class="parent-name">MR. Nguyễn Đắc Tài | MRS. Nguyễn Thị Thơm</h2>
+        <div class="parents-group bride-side" data-animate="fade-right">
+          <h2 class="parent-name">Ông Nguyễn Đắc Tài | Bà Nguyễn Thị Thơm</h2>
           <address class="parent-address">
             Khu dân cư Hiệp Thành City - phường Tân Thới Hiệp - Tp.HCM
           </address>
@@ -88,20 +89,20 @@
 
     <section class="invite">
       <div class="content">
-        <p class="subtitle">SAVE THE DATE</p>
-        <time class="event-date" datetime="2027-01-18">Thứ Hai | 18.01.2027</time>
-        <time class="lunar-date" datetime="">(Tức ngày 11 tháng 12 năm Bính Ngọ âm lịch)</time>
+        <p class="subtitle" data-animate="fade-in">SAVE THE DATE</p>
+        <time class="event-date" data-animate="fade-in" datetime="2027-01-18">Thứ Hai | 18:00 | 18.01.2027</time>
+        <time class="lunar-date" data-animate="fade-in" datetime="">(Tức ngày 11 tháng 12 năm Bính Ngọ âm lịch)</time>
 
-        <div class="divider">◆</div>
+        <div class="divider" data-animate="fade-in">◆</div>
 
-        <div class="venue-label">Nhà hàng</div>
-        <h2 class="venue-name">Gem Center</h2>
+        <div class="venue-label" data-animate="fade-in">Nhà hàng</div>
+        <h2 class="venue-name" data-animate="fade-in">Gem Center</h2>
 
-        <address class="venue-address">
+        <address class="venue-address" data-animate="fade-in">
           Sảnh SALTUS - 08 Nguyễn Bỉnh Khiêm, Phường Sài Gòn, Tp. Hồ Chí Minh
         </address>
 
-        <div class="venue-action">
+        <div class="venue-action" data-animate="fade-in">
           <a href="https://maps.app.goo.gl/KVm3GfN3T3U7Cpj69?g_st=ic" class="map-btn" target="_blank"
             rel="noopener noreferrer">MAPS</a>
         </div>
@@ -110,14 +111,14 @@
 
     <section class="timeline">
       <div class="content">
-        <h2 class="title">Timeline</h2>
+        <h2 class="title" data-animate="fade-in">Timeline</h2>
 
         <div class="timeline-container">
           <!-- Item 1: Vows Ceremony -->
           <div class="timeline-item">
             <h3 class="event-name">Đón khách</h3>
             <div class="event-icon">
-              <img src="assets/images/icons/gate.png" alt="Rings Icon">
+              <img class="icon-animate" src="assets/images/icons/gate.png" alt="Rings Icon">
             </div>
             <time class="event-time" datetime="17:00">17:00</time>
           </div>
@@ -126,7 +127,7 @@
           <div class="timeline-item">
             <h3 class="event-name">Lễ thành hôn</h3>
             <div class="event-icon">
-              <img src="assets/images/icons/cups.png" alt="Camera Icon">
+              <img class="icon-animate" src="assets/images/icons/cups.png" alt="Camera Icon">
             </div>
             <time class="event-time" datetime="18:30">18:30</time>
           </div>
@@ -135,24 +136,25 @@
           <div class="timeline-item">
             <h3 class="event-name">Bắt đầu tiệc</h3>
             <div class="event-icon">
-              <img src="assets/images/icons/dinner.png" alt="Glasses Icon">
+              <img class="icon-animate" src="assets/images/icons/dinner.png" alt="Glasses Icon">
             </div>
-            <time class="event-time" datetime="19:00">19:30</time>
+            <time class="event-time" datetime="19:00">19:00</time>
           </div>
 
           <!-- Item 4: Dinner -->
           <div class="timeline-item">
             <h3 class="event-name">Kết thúc tiệc.</h3>
             <div class="event-icon">
-              <img src="assets/images/icons/camera.png" alt="Dinner Icon">
+              <img class="icon-animate" src="assets/images/icons/camera.png" alt="Dinner Icon">
             </div>
             <time class="event-time" datetime="21:00">21:00</time>
           </div>
         </div>
 
         <div class="dresscode">
-          <div class="title">Dresscode</div>
-          <div class="subtext">Hãy cứ mặc những gì khiến bản thân cảm thấy đẹp và tự tin nhé!</div>
+          <div class="title" data-animate="fade-in">Dresscode</div>
+          <div class="subtext" data-animate="fade-in">Hãy cứ mặc những gì khiến bản thân cảm thấy đẹp và tự tin nhé!
+          </div>
         </div>
       </div>
     </section>
@@ -161,7 +163,7 @@
       <div class="content">
         <div class="header">
           <div class="illustration">
-            <img src="assets/images/illustration.png" alt="Swan Illustration">
+            <img src="assets/images/illustration.png" alt="Swan Illustration" data-animate="flip-vertical-left">
           </div>
           <div class="title" data-animate="fade-in">Xác nhận tham dự</div>
           <div class="divider">◆</div>
@@ -178,7 +180,7 @@
             RSVP <span class="bold">by December 15th</span>, so that we may thoughtfully prepare for this warm and
             memorable
             celebration together./</i> -->
-          <hr />
+          <hr data-animate="fade-in" />
         </div>
 
         <form id="rsvpForm" class="rsvp-form" data-animate="fade-in">
@@ -277,7 +279,7 @@
       <div class="content" data-animate="fade-in">
         <h2 class="titile" data-animate="fade-in">Album photo</h2>
         <div class="subtext">Hơn ba năm yêu xa cuối cùng chuyện tình yêu của cả hai cũng mở ra một chương mới hạnh phúc
-          và viên mãn hơn. Trân thành
+          và viên mãn hơn. Chân thành
           cảm ơn tất cả những người thân thương đã đồng hành cùng Kỳ Vương và Thanh Thảo trong suốt hành trình thật
           nhiều cảm xúc
           này ạ!</div>
@@ -330,7 +332,7 @@
     </section>
 
 
-    <!-- <div class="music-box">
+    <div class="music-box">
       <div class="label">
         <div id="musicLabel" class="musicLabel">Turn the</br> Music on</div>
       </div>
@@ -339,8 +341,8 @@
       </div>
     </div>
     <audio id="audio" preload="auto"
-      src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/music/Kina%20Grannis%20-%20Can't%20Help%20Falling%20In%20Love%20(Lyrics).mp3"
-      loop type="audio/mpeg"></audio> -->
+      src="https://pub-d341ea7ec201435598469d75d8c4a056.r2.dev/music/Mashup%20L%E1%BB%85%20%C4%90%C6%B0%E1%BB%9Dng%20x%20M%E1%BB%99t%20%C4%90%E1%BB%9Di%20%20Mobuds%20ft%20Wenne.mp3"
+      loop type="audio/mpeg"></audio>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
