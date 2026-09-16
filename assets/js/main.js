@@ -108,6 +108,10 @@
 
     audio.addEventListener("play", () => icon.classList.add("spin"));
     audio.addEventListener("pause", () => icon.classList.remove("spin"));
+
+    if (!audio.paused) {
+      icon.classList.add("spin");
+    }
   }
 
   async function loadGuest() {
