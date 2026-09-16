@@ -487,6 +487,7 @@ section {
 .invite .content .venue-label {
   font-size: 10px;
   font-family: "SVN-GothamBook", sans-serif;
+  margin-bottom: 2%;
 }
 .invite .content .venue-name {
   font-family: "PinyonScript-Regular", sans-serif;
