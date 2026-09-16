@@ -10,8 +10,8 @@
         padding-bottom: 10%;
 
         h2 {
-            font-family: $font-UVNBucThu;
-            font-size: 56px;
+            font-family: $font-PinyonScriptRegular;
+            font-size: 48px;
             font-weight: 300;
             color: $title-color;
             margin: 10% 0 0%
@@ -81,7 +81,7 @@
 
         @media (max-width: 500px) {
             h2 {
-                font-size: calc((56 / 500) * 100vw);
+                font-size: calc((48 / 500) * 100vw);
             }
 
             .subtext {

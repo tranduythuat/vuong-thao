@@ -43,8 +43,8 @@
         }
 
         .venue-name {
-            font-family: $font-MsClaudy;
-            font-size: 70px;
+            font-family: $font-PinyonScriptRegular;
+            font-size: 52px;
             font-weight: 300;
         }
 
@@ -74,94 +74,39 @@
         }
 
         @media (max-width: 500px) {
-            .logo {
-                img {
-                    max-width: calc((130 / 500) * 100vw);
-                }
+            .subtitle {
+                font-size: calc((10 / 500) * 100vw);
             }
 
-            .parent-info {
-                font-size: calc((12.5 / 500) * 100vw);
+            .event-date {
+                font-size: calc((18 / 500) * 100vw);
             }
 
-            .invite-giatien {
-                .label {
-                    font-size: calc((10.5 / 500) * 100vw);
-                }
-
-                .time {
-                    font-size: calc((32 / 500) * 100vw);
-                }
-            }
-
-            .invite-text {
-                .text {
-                    font-size: calc((12.5 / 500) * 100vw);
-                }
-
-                .couple-name {
-                    font-size: calc((61 / 500) * 100vw);
-
-                    .character {
-                        font-size: calc((30 / 500) * 100vw);
-                    }
-                }
-            }
-
-            .couple-img {
-                img {
-                    max-width: calc((238 / 500) * 100vw);
-                }
-            }
-
-            .time-block {
-                .label {
-                    font-size: calc((15 / 500) * 100vw);
-                }
-
-                .days-of-week {
-                    font-size: calc((20 / 500) * 100vw);
-                }
-
-                .grid {
-
-                    .month,
-                    .year {
-                        font-size: calc((20 / 500) * 100vw);
-                    }
-
-                    .date {
-                        font-size: calc((60 / 500) * 100vw);
-                    }
-                }
-
-                .lunar-year {
-                    font-size: calc((10.5 / 500) * 100vw);
-                }
+            .lunar-date {
+                font-size: calc((11 / 500) * 100vw);
             }
 
             .divider {
-                img {
-                    max-width: calc((76 / 500) * 100vw);
-                }
+                font-size: calc((14 / 500) * 100vw);
             }
 
-            .location-block {
-                .name {
-                    font-size: calc((52 / 500) * 100vw);
-                }
-
-                .address {
-                    font-size: calc((13.3 / 500) * 100vw);
-                }
+            .venue-label {
+                font-size: calc((10 / 500) * 100vw);
             }
 
-            .btn-wrap {
+            .venue-name {
+                font-size: calc((52 / 500) * 100vw);
+            }
+
+            address {
+                font-size: calc((9 / 500) * 100vw);
+            }
+
+            .venue-action {
                 .map-btn {
-                    font-size: calc((13.3 / 500) * 100vw);
-                    width: calc((236 / 500) * 100vw);
+                    width: calc((323 / 500) * 100vw);
+                    font-size: calc((10 / 500) * 100vw);
                     border-radius: calc((15 / 500) * 100vw);
-                    border: calc((2 / 500) * 100vw) solid $text-color;
                 }
             }
         }

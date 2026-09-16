@@ -11,6 +11,8 @@
 
   let swiperInitialized = false;
 
+  let hasInitializedMainContent = false;
+
   /* ======================================================
        SWIPER
     ====================================================== */
@@ -61,7 +63,7 @@
 
     requestAnimationFrame(() => {
       mainSwiper.update();
-      thumbSwiper.update();
+      // thumbSwiper.update();
     });
   }
 
@@ -163,50 +165,6 @@
     const params = new URLSearchParams(window.location.search);
     const isCardOpened = params.get("opened") === "1";
 
-    let isLocked = false;
-    let lockedScrollY = 0;
-
-    function lockInteraction() {
-      isLocked = true;
-      lockedScrollY = window.scrollY;
-      document.body.classList.add("page-locked");
-      // Giữ trang đứng yên
-      window.scrollTo(0, lockedScrollY);
-    }
-
-    function unlockInteraction() {
-      isLocked = false;
-      document.body.classList.remove("page-locked");
-    }
-
-    function preventInteraction(e) {
-      if (!isLocked) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    // Chặn wheel
-    window.addEventListener("wheel", preventInteraction, {
-      passive: false,
-    });
-
-    // Chặn swipe trên mobile
-    window.addEventListener("touchmove", preventInteraction, {
-      passive: false,
-    });
-
-    // Giữ scroll position
-    function preventScroll() {
-      if (!isLocked) return;
-
-      window.scrollTo(0, lockedScrollY);
-    }
-
-    window.addEventListener("scroll", preventScroll, {
-      passive: false,
-    });
-
     function markCardOpened() {
       const url = new URL(window.location.href);
       url.searchParams.set("opened", 1);
@@ -216,66 +174,68 @@
     if (isCardOpened) {
       gsap.set(".letter-section", { display: "none", opacity: 0 });
       gsap.set(".container", { display: "block", opacity: 1 });
-      initSwiper();
-      ScrollTrigger.refresh();
+      requestAnimationFrame(initMainContent);
       return;
     }
 
-    tl.set(".container", { display: "block", opacity: 1 })
-      .set(".container .content", { opacity: 1 })
-      .fromTo(".text-open, .click", { opacity: "1", y: 0, duration: .5 }, { opacity: "0", y: 120, duration: 1 }, "")
-      // .to(".group-name", { opacity: "0", y: -120, duration: 1.5 }, "-=1")
-      .to(".left", { x: -250, duration: 2.5 },)
-      .to(".right", { x: 250, duration: 2.5 }, "<")
-      .set(".click", { display: "none" },)
-      .to(".letter-section", {
-        opacity: 0,
-      }, "-=.5")
-      .set(".letter-section", { display: "none" },)
-      .call(() => {
-        // Unlock interactions right after letter is hidden so user can interact immediately.
-        try {
-          unlockInteraction();
-          console.log("UNLOCK (letter hidden)", performance.now());
-        } catch (err) {
-          console.warn('unlockInteraction failed', err);
+    if (!openCard) {
+      gsap.set(".container", { display: "block", opacity: 1 });
+      requestAnimationFrame(initMainContent);
+      return;
+    }
+
+    tl.to(".letter-section", {
+      opacity: 0,
+      duration: 2
+    })
+      .set(".letter-section", { display: "none" })
+      .set(".container .content", { opacity: 0 })
+      .set(".container", { display: "block" })
+      .to(".container", {
+        opacity: 1,
+        onComplete: () => {
+
+          // 💥 Reset ScrollTrigger
+          // ScrollTrigger.refresh();
+
+          // 💥 Nếu cần reset toàn bộ animation
+          // gsap.globalTimeline.clear();
+
+          // 💥 Re-init animation cho container
+          initMainContent();
+          // initMusic();
+
+          // initDresscodeAnimation();
+          // initTimeline();
         }
-      })
-      .call(() => {
-        console.log("TIMELINE COMPLETE", performance.now());
+      });
 
-        initSwiper();
-        initAnimations();
-
-        console.log("INIT ANIMATIONS COMPLETE", performance.now());
-
-        if (window.ScrollTrigger && typeof ScrollTrigger.refresh === 'function') {
-          ScrollTrigger.refresh();
-          console.log("REFRESH COMPLETE", performance.now());
-        }
-      })
-    // .to(".container .content", {
-    //   onComplete: () => {
-
-    //   }
-    // });
-
-    if (!openCard) return;
-
-    openCard.addEventListener("click", (e) => {
-      if (isLocked) return;
+    openCard.addEventListener("click", () => {
       markCardOpened();
 
-      lockInteraction();
-
       if (audio && audio.paused) {
-        audio.volume = 0.5
         audio.play().catch(err => {
           console.log("Autoplay blocked:", err);
         });
       }
       tl.play();
     });
+  }
+
+  function initMainContent() {
+    if (hasInitializedMainContent) return;
+    hasInitializedMainContent = true;
+
+    // initScrollPage();
+    initAnimations();
+    initSwiper();
+    initMusic();
+    // initDresscodeAnimation();
+    initTimeline();
+    // initFAQ();
+    initRSVP();
+    // startCountdown(new Date("2026-12-12T18:00:00"));
+    ScrollTrigger.refresh();
   }
 
   function initLetterAnimation() {
@@ -1027,17 +987,7 @@
 
   function init() {
     gsap.registerPlugin(ScrollTrigger);
-    // initPage();
-    // initLetterAnimation();
-    initAnimations();
-    initSwiper();
-    // loadGuest();
-    initMusic();
-    // initDresscodeAnimation();
-    initTimeline();
-    // initFAQ();
-    initRSVP();
-    // startCountdown(new Date("2026-09-19T11:00:00"));
+    initPage();
   }
 
   document.addEventListener("DOMContentLoaded", init);
