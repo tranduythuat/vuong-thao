@@ -12,6 +12,7 @@
   let swiperInitialized = false;
 
   let hasInitializedMainContent = false;
+  let isSubmitting = false;
 
   /* ======================================================
        SWIPER
@@ -793,31 +794,18 @@
     };
   }
 
-  async function handleFormSubmit(e, code = "", lang = "vi") {
+  async function handleFormSubmit(e, lang = "vi") {
     e.preventDefault();
-    // const form = document.forms["rsvpForm"];
 
-    // form.addEventListener("submit", (e) => {
-    //   e.preventDefault();
+    // Prevent duplicate submit
+    if (isSubmitting) { return; }
 
-    //   const data = new FormData(form);
-    //   console.log(Object.fromEntries(data));
-    // });
-
-    const form = e.target;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
+    const form = document.forms["rsvpForm"];
 
     if (!form) {
+      console.error("RSVP form not found");
       return;
     }
-
-    const {
-      name,
-      confirm,
-      guest_number,
-      wish,
-    } = data;
 
     // =========================
     // i18n Messages
@@ -846,12 +834,29 @@
     };
 
     const t = messages[lang] || messages.vi;
-    // const validation = validateRSVPForm(form, data, lang);
-    // renderRSVPValidationUI(form, validation);
 
-    // if (!validation.isValid) {
-    //   return;
-    // }
+    // Lock submit
+    isSubmitting = true;
+
+    // Disable submit button
+    const submitButton = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.dataset.originalText = submitButton.textContent;
+      if (submitButton.tagName === "BUTTON") {
+        submitButton.textContent = t.sendingTitle;
+      }
+    }
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const {
+      name,
+      confirm,
+      guest_number,
+      wish,
+    } = data;
 
     // =========================
     // Loading popup
@@ -861,50 +866,45 @@
       text: t.sendingText,
       icon: "info",
       allowOutsideClick: false,
+      allowEscapeKey: false,
+      showConfirmButton: false,
       didOpen: () => Swal.showLoading(),
     });
 
-    // const SHEET_ENDPOINTS = {
-    //   nha_gai: "https://script.google.com/macros/s/AKfycbyxsV_F4MTOm7s-o9pbQQ2zi56-NcS4f86Q0GHKhPtknSRvlHJCzTVP9cc1hN1F3Tqcxg/exec?sheet=nha-gai",
-    //   nha_trai_209: "https://script.google.com/macros/s/AKfycbyxsV_F4MTOm7s-o9pbQQ2zi56-NcS4f86Q0GHKhPtknSRvlHJCzTVP9cc1hN1F3Tqcxg/exec?sheet=nha-trai-20-9",
-    //   nha_trai_219: "https://script.google.com/macros/s/AKfycbyxsV_F4MTOm7s-o9pbQQ2zi56-NcS4f86Q0GHKhPtknSRvlHJCzTVP9cc1hN1F3Tqcxg/exec?sheet=nha-trai-21-9",
-    // };
+    const sheetURL = "https://script.google.com/macros/s/AKfycbymfu1xSkdfivkr0qA3jYkggJHx-H0rCX9pYJjoXYKuYthIErszBeNHc9vYaxzaRgdRgA/exec?sheet=confirm";
 
-    // let sheetURL = SHEET_ENDPOINTS[code] || SHEET_ENDPOINTS['nha_gai'];
-    let sheetURL = "?sheet=confirm";
+    const controller = new AbortController();
+
+    const timeout = setTimeout(() => { controller.abort(); }, 15000);
 
     try {
+      const body = new URLSearchParams({ name, confirm, guest_number, wish, });
       const res = await fetch(sheetURL, {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({
-          name,
-          confirm,
-          guest_number,
-          wish,
-        }),
+        headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8", },
+        body,
+        signal: controller.signal,
       });
+      clearTimeout(timeout);
 
       // Nếu server lỗi HTTP
       if (!res.ok) {
-        throw new Error("Server response not OK");
+        throw new Error(`HTTP ${res.status}`);
       }
 
-      const result = await res.json().catch(() => null);
-
-      if (!result) {
-        Swal.fire({
-          title: t.errorTitle,
-          text: t.errorServer,
-          icon: "error",
-          confirmButtonText: t.errorRetry,
-          confirmButtonColor: "#3c7fc2",
-        });
-        return;
+      let result;
+      try {
+        result = await res.json();
+      } catch (error) {
+        throw new Error("Invalid server response");
       }
 
+      if (!result || result.success === false) {
+        throw new Error(t.errorServer);
+      }
+
+      // Success
       form.reset();
-      clearRSVPValidationUI(form);
 
       Swal.fire({
         title: t.successTitle,
@@ -915,14 +915,29 @@
       });
     } catch (error) {
       console.error("Error:", error);
+      clearTimeout(timeout);
+      console.error("RSVP submit error:", error);
 
-      Swal.fire({
+      let errorMessage = t.errorServer;
+      if (error.name === "AbortError") {
+        errorMessage = t.errorTimeout;
+      }
+
+      await Swal.fire({
         title: t.errorTitle,
         text: error.message || t.errorServer,
         icon: "error",
         confirmButtonText: t.errorRetry,
         confirmButtonColor: "#3c7fc2",
       });
+    } finally {
+      isSubmitting = false;
+      if (submitButton) {
+        submitButton.disabled = false;
+        if (submitButton.tagName === "BUTTON") {
+          submitButton.textContent = submitButton.dataset.originalText || "Submit";
+        }
+      }
     }
   }
 
@@ -931,7 +946,7 @@
 
     if (form) {
       // bindRSVPFieldEvents(form);
-      form.addEventListener("submit", (e) => handleFormSubmit(e, "", "en"));
+      form.addEventListener("submit", (e) => handleFormSubmit(e, "", "vi"));
     }
   }
 
