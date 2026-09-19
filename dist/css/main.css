@@ -371,7 +371,6 @@ section {
 }
 .hero .content .invitation-text.sub {
   font-family: "SVN-GothamLight", sans-serif;
-  margin: 8%;
 }
 .hero .content .couple-img {
   margin: 8% 0 5%;
@@ -381,9 +380,11 @@ section {
 }
 .hero .content .couple-names {
   font-family: "PinyonScript-Regular", sans-serif;
-  font-size: 52px;
+  font-size: 38px;
   font-weight: 300;
-  letter-spacing: 3px;
+  color: #51110f;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 .hero .content .illustration img {
   max-width: 76px;
@@ -399,8 +400,7 @@ section {
     max-width: 60vw;
   }
   .hero .content .couple-names {
-    font-size: 10.4vw;
-    letter-spacing: 0.6vw;
+    font-size: 7.6vw;
   }
   .hero .content .illustration img {
     max-width: 15.2vw;
@@ -469,6 +469,8 @@ section {
   font-family: "SVN-GothamLight", sans-serif;
   font-size: 10px;
   margin-bottom: 2%;
+  line-height: 2;
+  letter-spacing: 1px;
 }
 .invite .content .event-date {
   font-family: "SVN-Gotham", sans-serif;
@@ -518,6 +520,7 @@ section {
 @media (max-width: 500px) {
   .invite .content .subtitle {
     font-size: 2vw;
+    letter-spacing: 0.2vw;
   }
   .invite .content .event-date {
     font-size: 3.6vw;

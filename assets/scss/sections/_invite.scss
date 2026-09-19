@@ -18,6 +18,8 @@
             font-family: $font-gothamLight;
             font-size: 10px;
             margin-bottom: 2%;
+            line-height: 2;
+            letter-spacing: 1px;
         }
 
         .event-date {
@@ -77,6 +79,7 @@
         @media (max-width: 500px) {
             .subtitle {
                 font-size: calc((10 / 500) * 100vw);
+                letter-spacing: calc((1 / 500) * 100vw);
             }
 
             .event-date {

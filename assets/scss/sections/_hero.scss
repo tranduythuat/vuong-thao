@@ -27,7 +27,6 @@
 
             &.sub {
                 font-family: $font-gothamLight;
-                margin: 8%;
             }
         }
 
@@ -41,9 +40,11 @@
 
         .couple-names {
             font-family: $font-PinyonScriptRegular;
-            font-size: 52px;
+            font-size: 38px;
             font-weight: 300;
-            letter-spacing: 3px;
+            color: #51110fff;
+            margin-top: 5%;
+            margin-bottom: 5%;
         }
 
         .illustration {
@@ -70,8 +71,7 @@
             }
 
             .couple-names {
-                font-size: calc((52 / 500) * 100vw);
-                letter-spacing: calc((3 / 500) * 100vw);
+                font-size: calc((38 / 500) * 100vw);
             }
 
             .illustration {
